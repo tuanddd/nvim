@@ -19,4 +19,3 @@ require("user.project")
 require("user.trouble")
 require("user.code-action-menu")
 require("user.lsp-signature")
-

@@ -10,21 +10,28 @@ end
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
+local function open_nvim_tree(data)
+	local directory = vim.fn.isdirectory(data.file) == 1
+
+	if not directory then
+		return
+	end
+
+	vim.cmd.cd(data.file)
+
+	require("nvim-tree.api").tree.open()
+end
+
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+
 nvim_tree.setup({
 	respect_buf_cwd = true,
 	reload_on_bufenter = true,
 	disable_netrw = true,
 	hijack_netrw = true,
-	open_on_setup = true,
-	open_on_setup_file = true,
 	open_on_tab = true,
 	filters = {
 		exclude = { ".env", ".env.local" },
-	},
-	ignore_ft_on_setup = {
-		"startify",
-		"dashboard",
-		"alpha",
 	},
 	hijack_cursor = false,
 	hijack_directories = {
@@ -53,7 +60,6 @@ nvim_tree.setup({
 	},
 	view = {
 		width = 30,
-		height = 30,
 		hide_root_folder = false,
 		side = "left",
 		mappings = {
