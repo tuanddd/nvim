@@ -63,8 +63,7 @@ packer.startup(function(use)
 
 	-- Colorscheme
 	use({
-		"catppuccin/nvim",
-		as = "catppuccin",
+		"sainnhe/everforest",
 	})
 
 	-- completion plugin
@@ -157,6 +156,40 @@ packer.startup(function(use)
 	-- Function signature
 	use("ray-x/lsp_signature.nvim")
 
+	-- Search and replace
+	use({
+		"s1n7ax/nvim-search-and-replace",
+		config = function()
+			require("nvim-search-and-replace").setup()
+		end,
+	})
+
+	-- Games
+	use({
+		"jim-fx/sudoku.nvim",
+		cmd = "Sudoku",
+		config = function()
+			require("sudoku").setup({
+				-- configuration ...
+			})
+		end,
+	})
+
+	use({
+		"alanfortlink/blackjack.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
+	})
+
+	-- surround text objects
+	use({
+		"kylechui/nvim-surround",
+		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
+	})
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
