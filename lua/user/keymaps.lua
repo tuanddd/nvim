@@ -87,3 +87,7 @@ keymap("n", "<leader>c", "<cmd>lua _COINTOP_TOGGLE()<CR>", { noremap = true, sil
 
 -- Browse projects
 keymap("n", "<leader>o", "<cmd>Telescope projects<CR>", opts)
+
+--Highlight after search
+keymap("n", "n", "n:Beacon<CR>", { silent = true })
+keymap("n", "N", "N:Beacon<CR>", { silent = true })

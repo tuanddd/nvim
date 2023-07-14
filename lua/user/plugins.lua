@@ -190,6 +190,10 @@ packer.startup(function(use)
 			})
 		end,
 	})
+
+	-- highlight where cursor just jumped
+	use({ "rainbowhxch/beacon.nvim" })
+
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
