@@ -53,7 +53,7 @@ packer.startup(function(use)
 	use("nvim-lua/plenary.nvim")
 
 	-- nvim-web-devicons
-	use("kyazdani42/nvim-web-devicons")
+	use("nvim-tree/nvim-web-devicons")
 
 	-- Auto close brackets, curly braces, etc...
 	use("windwp/nvim-autopairs")
@@ -112,7 +112,9 @@ packer.startup(function(use)
 	use("lewis6991/gitsigns.nvim")
 
 	-- Nvimtree
-	use("kyazdani42/nvim-tree.lua")
+	use({ "nvim-tree/nvim-tree.lua", requires = {
+		"nvim-tree/nvim-web-devicons",
+	} })
 
 	-- Bufferline a.k.a tabs as we know it
 	use("akinsho/bufferline.nvim")
@@ -124,7 +126,7 @@ packer.startup(function(use)
 	-- Lualine (status line)
 	use({
 		"nvim-lualine/lualine.nvim",
-		requires = { "kyazdani42/nvim-web-devicons" },
+		requires = { "nvim-tree/nvim-web-devicons" },
 	})
 
 	-- Neovim greeter
@@ -139,7 +141,7 @@ packer.startup(function(use)
 	-- Prettify the quick fix list
 	use({
 		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
+		requires = "nvim-tree/nvim-web-devicons",
 	})
 
 	-- Markdown preview
